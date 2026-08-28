@@ -61,7 +61,7 @@ export function About() {
     <section className="section section--about" id="sobre">
       <div className="section__shell section__shell--split">
         <div>
-          <p className="section__eyebrow">Sobre nós</p>
+          <p className="section__eyebrow">Sobre mim</p>
           <h2 className="section__title">
             Um estúdio pensado no cuidado com cada detalhe
           </h2>
