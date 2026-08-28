@@ -6,10 +6,10 @@
 
 .hero__brush {
   position: absolute;
-  top: -80px;
-  right: -140px;
-  width: 780px;
-  height: 980px;
+  top: 24px;
+  right: -120px;
+  width: 690px;
+  height: auto;
   pointer-events: none;
 }
 
@@ -138,6 +138,8 @@
   display: flex;
   justify-content: center;
   align-self: end;
+  /* Compensa o padding da seção para o pulso sangrar até a borda inferior */
+  margin-bottom: -72px;
 }
 
 .hero__figure .hand {
@@ -155,6 +157,7 @@
 
   .hero__figure {
     order: -1;
+    margin-bottom: 0;
   }
 
   .hero__figure .hand {
@@ -162,10 +165,9 @@
   }
 
   .hero__brush {
-    top: -60px;
-    right: -180px;
-    width: 620px;
-    height: 760px;
+    top: 0;
+    right: -220px;
+    width: 560px;
   }
 
   .hero__services {

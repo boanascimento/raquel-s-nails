@@ -1,4 +1,5 @@
 import React from 'react';
+import BrushStroke from './BrushStroke';
 import HandIllustration from './HandIllustration';
 import {
   NailArtIcon,
@@ -32,22 +33,7 @@ export default function Hero() {
   return (
     <section className="hero" id="top">
       {/* Pincelada decorativa de fundo */}
-      <svg
-        className="hero__brush"
-        viewBox="0 0 720 900"
-        preserveAspectRatio="xMidYMid slice"
-        aria-hidden="true"
-        focusable="false"
-      >
-        <path
-          d="M182 74c96-52 214-58 318-22 74 26 132 76 152 148 22 78-14 152-70 208-64 64-96 128-92 214 4 78-38 148-114 172-92 30-190-16-236-96-42-74-38-166 4-240 34-60 44-114 24-180-24-78 12-166 92-204z"
-          fill="var(--color-pink-100)"
-        />
-        <path
-          d="M262 118c74-30 158-26 226 12 52 30 80 84 72 142-8 62-52 108-98 148-52 46-72 100-62 168 10 66-26 122-90 138-78 20-152-30-176-104-22-68 4-142 52-196 40-46 54-92 40-152-14-64 22-130 96-156z"
-          fill="var(--color-pink-50)"
-        />
-      </svg>
+      <BrushStroke />
 
       <div className="hero__shell">
         <div className="hero__content">

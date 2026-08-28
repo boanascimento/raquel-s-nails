@@ -1,6 +1,15 @@
 import React from 'react';
 import './Sections.css';
 
+interface IPlans {
+  name: string
+  price: string
+  description: string
+  items: string[]
+  featured: boolean
+  linkToSchedule: string
+}
+
 const GALLERY = [
   { name: 'Francesinha moderna', palette: ['#f7ddd6', '#e3b7ad'] },
   { name: 'Nail art geométrica', palette: ['#e6e3f4', '#b9b6dd'] },
@@ -10,17 +19,18 @@ const GALLERY = [
   { name: 'Cromada espelhada', palette: ['#e0e7ea', '#adbcc4'] },
 ];
 
-const PLANS = [
+const PLANS: IPlans[] = [
   {
-    name: 'Essencial',
+    name: 'Alongamento em gel + Nail Art simples',
     price: '90',
-    description: 'Para manter as unhas sempre em ordem.',
-    items: ['Manicure completa', 'Esmaltação tradicional', 'Cutilagem suave'],
+    description: 'Para uma estética mais arrojada.',
+    items: ['Manicure completa', 'Alongamento em gel', 'Cutilagem suave'],
     featured: false,
+    linkToSchedule: 'https://tuaagenda.app/c/RaquelsNails?startSchedule=true&profissionalID=beafa522-30ce-4d62-b744-1c4567b712ff&servicos=6e13f06a-6d7d-4f18-885f-3780c88d190b#flowSchedule/2'
   },
   {
-    name: 'Signature',
-    price: '160',
+    name: 'Nail Art Elaborada ou Emcapsulada',
+    price: '10',
     description: 'O nosso serviço mais pedido.',
     items: [
       'Alongamento em fibra ou gel',
@@ -28,11 +38,12 @@ const PLANS = [
       'Nail art em duas unhas',
       'Hidratação das cutículas',
     ],
-    featured: true,
+    featured: false,
+    linkToSchedule: 'https://tuaagenda.app/c/RaquelsNails?startSchedule=true&profissionalID=beafa522-30ce-4d62-b744-1c4567b712ff&servicos=6e13f06a-6d7d-4f18-885f-3780c88d190b#flowSchedule/2'
   },
   {
-    name: 'Studio',
-    price: '240',
+    name: 'Manutenção do alongamento em Gel',
+    price: '80',
     description: 'Experiência completa, com hora marcada exclusiva.',
     items: [
       'Alongamento premium',
@@ -41,6 +52,7 @@ const PLANS = [
       'Retoque em 15 dias',
     ],
     featured: false,
+    linkToSchedule: 'https://tuaagenda.app/c/RaquelsNails?startSchedule=true&profissionalID=beafa522-30ce-4d62-b744-1c4567b712ff&servicos=6e13f06a-6d7d-4f18-885f-3780c88d190b#flowSchedule/2'
   },
 ];
 
@@ -143,8 +155,8 @@ export function Pricing() {
                   <li key={item}>{item}</li>
                 ))}
               </ul>
-              <a className="plan__cta" href="#contato">
-                Agendar {plan.name}
+              <a className="plan__cta" href={plan.linkToSchedule} target='_blank'>
+                Agendar serviço
               </a>
             </li>
           ))}
@@ -170,11 +182,14 @@ export function Footer() {
         <address className="footer__contact">
           <p>Rua das Acácias, 128 - Sala 4</p>
           <p>
-            <a href="tel:+5511999998888">(11) 99999-8888</a>
+            <a href="tel:+5581988815870">(81) 98881-5870</a>
           </p>
           <p>
-            <a href="mailto:contato@raquelsnails.com.br">
-              contato@raquelsnails.com.br
+            <a href="tel:+5581996477646">(81) 99647-7646</a>
+          </p>
+          <p>
+            <a href="https://www.instagram.com/raquel.s.nails/" target='_blank'>
+              @raquel.s.nails
             </a>
           </p>
         </address>

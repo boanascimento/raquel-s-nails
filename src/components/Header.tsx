@@ -94,14 +94,14 @@ export default function Header() {
           </nav>
 
           <div className="header__actions">
-            <a className="header__action" href="#precos">
+            {/* <a className="header__action" href="#precos">
               <CartIcon />
               <span>Carrinho</span>
             </a>
             <a className="header__action" href="#contato">
               <UserIcon />
               <span>Entrar</span>
-            </a>
+            </a> */}
           </div>
         </div>
       </div>
