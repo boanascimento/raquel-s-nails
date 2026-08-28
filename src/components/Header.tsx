@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './Header.css';
 
 const NAV_LINKS = [
-  { label: 'Sobre nós', href: '#sobre' },
+  { label: 'Sobre mim', href: '#sobre' },
   { label: 'Galeria', href: '#galeria' },
   { label: 'Preços', href: '#precos' },
 ];
