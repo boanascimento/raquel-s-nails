@@ -1,0 +1,137 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-color: rgba(253, 248, 246, 0.88);
+  backdrop-filter: blur(10px);
+}
+
+.header__shell {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  max-width: var(--shell-max);
+  margin: 0 auto;
+  padding: 22px var(--shell-pad);
+}
+
+.header__logo {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.header__logo-accent {
+  color: var(--color-pink-500);
+}
+
+.header__collapse {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.header__nav {
+  display: flex;
+  gap: 44px;
+}
+
+.header__nav-link,
+.header__action {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 6px 2px;
+  color: var(--color-ink-soft);
+  font-size: 0.94rem;
+  font-weight: 400;
+  transition: color 0.2s ease;
+}
+
+.header__nav-link::after {
+  content: '';
+  position: absolute;
+  right: 2px;
+  bottom: 0;
+  left: 2px;
+  height: 1.5px;
+  background-color: var(--color-pink-500);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.header__nav-link:hover,
+.header__action:hover {
+  color: var(--color-ink);
+}
+
+.header__nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+.header__actions {
+  display: flex;
+  gap: 30px;
+}
+
+/* Botão de menu — visível só no mobile */
+.header__burger {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.header__burger-icon {
+  display: grid;
+  gap: 4px;
+  width: 22px;
+}
+
+.header__burger-icon span {
+  height: 1.5px;
+  background-color: var(--color-ink);
+}
+
+@media (max-width: 860px) {
+  .header__shell {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .header__burger {
+    display: inline-flex;
+  }
+
+  .header__collapse {
+    display: none;
+    flex-basis: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    padding-bottom: 12px;
+  }
+
+  .header__collapse--open {
+    display: flex;
+  }
+
+  .header__nav {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .header__nav-link,
+  .header__action {
+    font-size: 1rem;
+  }
+}
