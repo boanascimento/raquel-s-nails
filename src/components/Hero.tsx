@@ -1,6 +1,5 @@
 import React from 'react';
 import BrushStroke from './BrushStroke';
-import HandIllustration from './HandIllustration';
 import {
   NailArtIcon,
   NailExtensionIcon,
@@ -75,9 +74,7 @@ export default function Hero() {
           </ul>
         </div>
 
-        <div className="hero__figure">
-          <HandIllustration />
-        </div>
+        <div className="hero__figure" />
       </div>
     </section>
   );
