@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import './Sections.css';
 import lastWork1 from '../assets/last-work-nails-1.png';
 import lastWork2 from '../assets/last-work-nails-2.png';
@@ -62,7 +62,7 @@ const PLANS: IPlans[] = [
     description: 'Para uma estética mais arrojada.',
     items: ['Manicure completa', 'Alongamento em gel', 'Cutilagem suave'],
     featured: false,
-    linkToSchedule: 'https://tuaagenda.app/c/RaquelsNails?startSchedule=true&profissionalID=beafa522-30ce-4d62-b744-1c4567b712ff&servicos=6e13f06a-6d7d-4f18-885f-3780c88d190b#flowSchedule/2'
+    linkToSchedule: 'https://tuaagenda.app/c/RaquelsNails?startSchedule=true&profissionalID=beafa522-30ce-4d62-b744-1c4567b712ff&servicos=6e13f06a-6d7d-4f18-885f-3780c88d190b#flowSchedule/1'
   },
   {
     name: 'Nail Art Elaborada ou Emcapsulada',
@@ -75,7 +75,7 @@ const PLANS: IPlans[] = [
       'Hidratação das cutículas',
     ],
     featured: false,
-    linkToSchedule: 'https://tuaagenda.app/c/RaquelsNails?startSchedule=true&profissionalID=beafa522-30ce-4d62-b744-1c4567b712ff&servicos=6e13f06a-6d7d-4f18-885f-3780c88d190b#flowSchedule/2'
+    linkToSchedule: 'https://tuaagenda.app/c/RaquelsNails?startSchedule=true&profissionalID=beafa522-30ce-4d62-b744-1c4567b712ff&servicos=6e13f06a-6d7d-4f18-885f-3780c88d190b#flowSchedule/1'
   },
   {
     name: 'Manutenção do alongamento em Gel',
@@ -88,7 +88,80 @@ const PLANS: IPlans[] = [
       'Retoque em 15 dias',
     ],
     featured: false,
-    linkToSchedule: 'https://tuaagenda.app/c/RaquelsNails?startSchedule=true&profissionalID=beafa522-30ce-4d62-b744-1c4567b712ff&servicos=6e13f06a-6d7d-4f18-885f-3780c88d190b#flowSchedule/2'
+    linkToSchedule: 'https://tuaagenda.app/c/RaquelsNails?startSchedule=true&profissionalID=beafa522-30ce-4d62-b744-1c4567b712ff&servicos=6e13f06a-6d7d-4f18-885f-3780c88d190b#flowSchedule/1'
+  },
+  {
+    name: 'Esmaltação em Gel',
+    price: '50',
+    description: 'Duração: 1h',
+    items: [],
+    featured: false,
+    linkToSchedule: 'https://tuaagenda.app/c/RaquelsNails?startSchedule=true&profissionalID=beafa522-30ce-4d62-b744-1c4567b712ff&servicos=6e13f06a-6d7d-4f18-885f-3780c88d190b#flowSchedule/1'
+  },
+  {
+    name: 'Gel nos pés',
+    price: '50',
+    description: 'Duração: 1h30',
+    items: [],
+    featured: false,
+    linkToSchedule: 'https://tuaagenda.app/c/RaquelsNails?startSchedule=true&profissionalID=beafa522-30ce-4d62-b744-1c4567b712ff&servicos=6e13f06a-6d7d-4f18-885f-3780c88d190b#flowSchedule/1'
+  },
+  {
+    name: 'Manicure',
+    price: '25',
+    description: 'Duração: 45 min',
+    items: [],
+    featured: false,
+    linkToSchedule: 'https://tuaagenda.app/c/RaquelsNails?startSchedule=true&profissionalID=beafa522-30ce-4d62-b744-1c4567b712ff&servicos=6e13f06a-6d7d-4f18-885f-3780c88d190b#flowSchedule/1'
+  },
+  {
+    name: 'Manicure + Pedicure',
+    price: '45',
+    description: 'Duração: 1h30',
+    items: [],
+    featured: false,
+    linkToSchedule: 'https://tuaagenda.app/c/RaquelsNails?startSchedule=true&profissionalID=beafa522-30ce-4d62-b744-1c4567b712ff&servicos=6e13f06a-6d7d-4f18-885f-3780c88d190b#flowSchedule/1'
+  },
+  {
+    name: 'Manicure + Pedicure + Spa',
+    price: '65',
+    description: 'Duração: 2h',
+    items: [],
+    featured: false,
+    linkToSchedule: 'https://tuaagenda.app/c/RaquelsNails?startSchedule=true&profissionalID=beafa522-30ce-4d62-b744-1c4567b712ff&servicos=6e13f06a-6d7d-4f18-885f-3780c88d190b#flowSchedule/1'
+  },
+  {
+    name: 'Pedicure',
+    price: '25',
+    description: 'Duração: 45 min',
+    items: [],
+    featured: false,
+    linkToSchedule: 'https://tuaagenda.app/c/RaquelsNails?startSchedule=true&profissionalID=beafa522-30ce-4d62-b744-1c4567b712ff&servicos=6e13f06a-6d7d-4f18-885f-3780c88d190b#flowSchedule/1'
+  },
+  {
+    name: 'Pedicure + Spa dos pés + tratamento de calos',
+    price: '45',
+    description: 'Duração: 1h30',
+    items: [
+      'Esfoliação',
+      'Tratamento de calos',
+      'Hidratação',
+      'Gel Spar que transforma a água em gel para aliviar o cansaço, hidratar, estimular a circulação e renovação celular',
+    ],
+    featured: false,
+    linkToSchedule: 'https://tuaagenda.app/c/RaquelsNails?startSchedule=true&profissionalID=beafa522-30ce-4d62-b744-1c4567b712ff&servicos=6e13f06a-6d7d-4f18-885f-3780c88d190b#flowSchedule/1'
+  },
+  {
+    name: 'Spa dos pés + tratamento de calos',
+    price: '30',
+    description: 'Duração: 40 min',
+    items: [
+      'Tratamento de calos',
+      'Esfoliação',
+      'Hidratação com massagem relaxante',
+    ],
+    featured: false,
+    linkToSchedule: 'https://tuaagenda.app/c/RaquelsNails?startSchedule=true&profissionalID=beafa522-30ce-4d62-b744-1c4567b712ff&servicos=6e13f06a-6d7d-4f18-885f-3780c88d190b#flowSchedule/1'
   },
 ];
 
@@ -104,27 +177,29 @@ export function About() {
         </div>
         <div className="about__text">
           <p>
-            O Raquel&apos;s Nails nasceu da vontade de transformar o cuidado com
-            as unhas em um ritual tranquilo. Trabalhamos com atendimento
-            individual, hora marcada e materiais esterilizados a cada
-            procedimento.
+            O Raquel S Nails nasceu da vontade de transformar o cuidado com as unhas em um ritual tranquilo. Trabalhamos com atendimento individual, hora marcada e materiais esterilizados a cada procedimento.
           </p>
           <p>
-            Cada desenho é criado junto com você, respeitando o formato natural
-            da sua unha e a sua rotina. O resultado é um acabamento que dura e
-            que continua parecendo seu.
+            Cada desenho é criado junto com você, respeitando o formato natural da sua unha e a sua rotina. O resultado é um acabamento que dura e que continua parecendo seu.
+
           </p>
           <dl className="about__stats">
             <div>
-              <dt>8 anos</dt>
+              <dt>15 anos</dt>
               <dd>de estúdio</dd>
             </div>
             <div>
-              <dt>2.400+</dt>
+              <dt>8.500+</dt>
               <dd>atendimentos</dd>
             </div>
             <div>
-              <dt>4,9</dt>
+              <dt>
+                <a href="https://www.google.com/maps/place/Raquel+S+Nails/data=!4m2!3m1!1s0x0:0x26020a751c4b5018?sa=X&ved=1t:2428&hl=pt-BR&ictx=111" target="_blank"
+                  rel="noreferrer"
+                >
+                  5
+                </a>
+              </dt>
               <dd>avaliação média</dd>
             </div>
           </dl>
@@ -163,6 +238,79 @@ export function Gallery() {
 }
 
 export function Pricing() {
+  const trackRef = useRef<HTMLUListElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [pageCount, setPageCount] = useState(1);
+  const [canScrollPrev, setCanScrollPrev] = useState(false);
+  const [canScrollNext, setCanScrollNext] = useState(true);
+
+  const getStep = useCallback((track: HTMLUListElement) => {
+    const firstCard = track.querySelector<HTMLElement>('.plan');
+    if (!firstCard) return 0;
+
+    const style = window.getComputedStyle(track);
+    const gap = parseFloat(style.columnGap || style.gap || '0') || 0;
+    return firstCard.offsetWidth + gap;
+  }, []);
+
+  const updateControls = useCallback(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const { scrollLeft, scrollWidth, clientWidth } = track;
+    setCanScrollPrev(scrollLeft > 4);
+    setCanScrollNext(scrollLeft < scrollWidth - clientWidth - 4);
+
+    const step = getStep(track);
+    if (step <= 0) return;
+
+    // Quantos cards cabem na viewport e quantas "páginas" isso gera.
+    const visibleCards = Math.max(1, Math.round(clientWidth / step));
+    const pages = Math.max(1, PLANS.length - visibleCards + 1);
+    setPageCount(pages);
+
+    const maxScroll = scrollWidth - clientWidth;
+    if (maxScroll <= 0) {
+      setActiveIndex(0);
+      return;
+    }
+    // Mapeia a posição do scroll para o índice de página (0..pages-1).
+    const index = Math.round((scrollLeft / maxScroll) * (pages - 1));
+    setActiveIndex(Math.min(pages - 1, Math.max(0, index)));
+  }, [getStep]);
+
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    updateControls();
+    track.addEventListener('scroll', updateControls, { passive: true });
+    window.addEventListener('resize', updateControls);
+
+    return () => {
+      track.removeEventListener('scroll', updateControls);
+      window.removeEventListener('resize', updateControls);
+    };
+  }, [updateControls]);
+
+  const scrollByCards = useCallback((direction: 1 | -1) => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const step = getStep(track);
+    if (step <= 0) return;
+    track.scrollBy({ left: step * direction, behavior: 'smooth' });
+  }, [getStep]);
+
+  const scrollToIndex = useCallback((index: number) => {
+    const track = trackRef.current;
+    if (!track) return;
+
+    const step = getStep(track);
+    if (step <= 0) return;
+    track.scrollTo({ left: step * index, behavior: 'smooth' });
+  }, [getStep]);
+
   return (
     <section className="section section--pricing" id="precos">
       <div className="section__shell">
@@ -170,35 +318,74 @@ export function Pricing() {
         <h2 className="section__title section__title--center">
           Escolha o seu serviço
         </h2>
-        <ul className="plans">
-          {PLANS.map((plan) => (
-            <li
-              className={`plan${plan.featured ? ' plan--featured' : ''}`}
-              key={plan.name}
-            >
-              {plan.featured && <span className="plan__tag">Mais pedido</span>}
-              <h3 className="plan__name">{plan.name}</h3>
-              <p className="plan__price">
-                <span className="plan__currency">R$</span>
-                {plan.price}
-              </p>
-              <p className="plan__description">{plan.description}</p>
-              <ul className="plan__items">
-                {plan.items.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-              <a
-                className="plan__cta"
-                href={plan.linkToSchedule}
-                target="_blank"
-                rel="noreferrer"
+
+        <div className="carousel">
+          <button
+            type="button"
+            className="carousel__arrow carousel__arrow--prev"
+            onClick={() => scrollByCards(-1)}
+            disabled={!canScrollPrev}
+            aria-label="Serviços anteriores"
+          >
+            <span aria-hidden="true">&#8249;</span>
+          </button>
+
+          <ul className="plans carousel__track" ref={trackRef}>
+            {PLANS.map((plan) => (
+              <li
+                className={`plan${plan.featured ? ' plan--featured' : ''}`}
+                key={plan.name}
               >
-                Agendar serviço
-              </a>
-            </li>
+                {plan.featured && (
+                  <span className="plan__tag">Mais pedido</span>
+                )}
+                <h3 className="plan__name">{plan.name}</h3>
+                <p className="plan__price">
+                  <span className="plan__currency">R$</span>
+                  {plan.price}
+                </p>
+                <p className="plan__description">{plan.description}</p>
+                <ul className="plan__items">
+                  {plan.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+                <a
+                  className="plan__cta"
+                  href={plan.linkToSchedule}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Agendar serviço
+                </a>
+              </li>
+            ))}
+          </ul>
+
+          <button
+            type="button"
+            className="carousel__arrow carousel__arrow--next"
+            onClick={() => scrollByCards(1)}
+            disabled={!canScrollNext}
+            aria-label="Próximos serviços"
+          >
+            <span aria-hidden="true">&#8250;</span>
+          </button>
+        </div>
+
+        <div className="carousel__dots" role="tablist" aria-label="Navegação de serviços">
+          {Array.from({ length: pageCount }).map((_, index) => (
+            <button
+              type="button"
+              key={index}
+              className={`carousel__dot${index === activeIndex ? ' carousel__dot--active' : ''}`}
+              onClick={() => scrollToIndex(index)}
+              aria-label={`Ir para a página ${index + 1}`}
+              aria-selected={index === activeIndex}
+              role="tab"
+            />
           ))}
-        </ul>
+        </div>
       </div>
     </section>
   );
@@ -210,7 +397,7 @@ export function Footer() {
       <div className="section__shell footer__shell">
         <div>
           <p className="footer__logo">
-            raquel<span>&apos;s</span> nails
+            Raquel <span>S</span> Nails
           </p>
           <p className="footer__note">
             Elegância na ponta dos dedos, com hora marcada.
@@ -237,13 +424,12 @@ export function Footer() {
         </address>
 
         <div className="footer__hours">
-          <p>Terça a sexta: 9h às 19h</p>
-          <p>Sábado: 9h às 16h</p>
+          <p>Segunda a sexta: 9h às 19h</p>
         </div>
       </div>
 
       <p className="footer__copy">
-        © {new Date().getFullYear()} Raquel&apos;s Nails. Todos os direitos
+        © {new Date().getFullYear()} Raquel S Nails. Todos os direitos
         reservados.
       </p>
     </footer>

@@ -117,18 +117,96 @@
   font-weight: 500;
 }
 
-/* Preços */
-.plans {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 26px;
+/* Preços - Carrossel */
+.carousel {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 12px;
   margin-top: 52px;
+}
+
+.plans {
+  list-style: none;
+  margin: 0;
+  padding: 8px 4px 18px;
+}
+
+.carousel__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 52px) / 3);
+  gap: 26px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel__track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel__arrow {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--color-pink-200);
+  border-radius: 50%;
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.carousel__arrow span {
+  transform: translateY(-2px);
+}
+
+.carousel__arrow:hover:not(:disabled) {
+  background-color: var(--color-pink-200);
+  border-color: var(--color-pink-300);
+}
+
+.carousel__arrow:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.carousel__dot {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--color-pink-200);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.carousel__dot--active {
+  background-color: var(--color-pink-500);
+  transform: scale(1.3);
 }
 
 .plan {
   position: relative;
   display: flex;
   flex-direction: column;
+  scroll-snap-align: start;
   padding: 38px 30px;
   border: 1px solid var(--color-pink-100);
   border-radius: var(--radius-md);
@@ -286,7 +364,6 @@
 
   .section__shell--split,
   .gallery,
-  .plans,
   .footer__shell {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 32px;
@@ -295,16 +372,28 @@
   .section__shell--split {
     grid-template-columns: 1fr;
   }
+
+  .carousel__track {
+    grid-auto-columns: calc((100% - 26px) / 2);
+  }
 }
 
 @media (max-width: 620px) {
   .gallery,
-  .plans,
   .footer__shell {
     grid-template-columns: 1fr;
   }
 
   .about__stats {
     gap: 28px;
+  }
+
+  .carousel__track {
+    grid-auto-columns: 85%;
+    gap: 18px;
+  }
+
+  .carousel__arrow {
+    display: none;
   }
 }
