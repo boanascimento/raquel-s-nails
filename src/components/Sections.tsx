@@ -188,7 +188,12 @@ export function Pricing() {
                   <li key={item}>{item}</li>
                 ))}
               </ul>
-              <a className="plan__cta" href={plan.linkToSchedule} target='_blank'>
+              <a
+                className="plan__cta"
+                href={plan.linkToSchedule}
+                target="_blank"
+                rel="noreferrer"
+              >
                 Agendar serviço
               </a>
             </li>
@@ -221,7 +226,11 @@ export function Footer() {
             <a href="tel:+5581996477646">(81) 99647-7646</a>
           </p>
           <p>
-            <a href="https://www.instagram.com/raquel.s.nails/" target='_blank'>
+            <a
+              href="https://www.instagram.com/raquel.s.nails/"
+              target="_blank"
+              rel="noreferrer"
+            >
               @raquel.s.nails
             </a>
           </p>
