@@ -1,5 +1,11 @@
 import React from 'react';
 import './Sections.css';
+import lastWork1 from '../assets/last-work-nails-1.png';
+import lastWork2 from '../assets/last-work-nails-2.png';
+import lastWork3 from '../assets/last-work-nails-3.png';
+import lastWork4 from '../assets/last-work-nails-4.png';
+import lastWork5 from '../assets/last-work-nails-5.png';
+import lastWork6 from '../assets/last-work-nails-6.png';
 
 interface IPlans {
   name: string
@@ -10,13 +16,43 @@ interface IPlans {
   linkToSchedule: string
 }
 
-const GALLERY = [
-  { name: 'Francesinha moderna', palette: ['#f7ddd6', '#e3b7ad'] },
-  { name: 'Nail art geométrica', palette: ['#e6e3f4', '#b9b6dd'] },
-  { name: 'Nude com pedrarias', palette: ['#f4e7dc', '#d9bfa6'] },
-  { name: 'Encapsulada floral', palette: ['#fbe6ec', '#e9adc0'] },
-  { name: 'Degradê baby boomer', palette: ['#f2f0ec', '#d8d2c9'] },
-  { name: 'Cromada espelhada', palette: ['#e0e7ea', '#adbcc4'] },
+interface IGalleryItem {
+  name: string
+  image: string
+  alt: string
+}
+
+const GALLERY: IGalleryItem[] = [
+  {
+    name: 'Francesinha em blocos azuis',
+    image: lastWork1,
+    alt: 'Unhas ovais com francesinha diagonal em azul-marinho e azul claro',
+  },
+  {
+    name: 'Esmaltação azul metalizada',
+    image: lastWork2,
+    alt: 'Unhas ovais curtas com esmaltação azul metalizada brilhante',
+  },
+  {
+    name: 'Francesinha preta com corações',
+    image: lastWork3,
+    alt: 'Unhas nude com ponta preta, filete dourado e corações pretos',
+  },
+  {
+    name: 'Nude marmorizado chocolate',
+    image: lastWork4,
+    alt: 'Unhas em tons de marrom chocolate com detalhes marmorizados em branco',
+  },
+  {
+    name: 'Stiletto amarelo com flor 3D',
+    image: lastWork5,
+    alt: 'Unhas stiletto em degradê amarelo com flor em relevo e detalhes dourados',
+  },
+  {
+    name: 'Francesinha lilás floral',
+    image: lastWork6,
+    alt: 'Unhas nude com ponta lilás, filete dourado e nail art floral',
+  },
 ];
 
 const PLANS: IPlans[] = [
@@ -109,16 +145,13 @@ export function Gallery() {
         <ul className="gallery">
           {GALLERY.map((item) => (
             <li className="gallery__item" key={item.name}>
-              <div
-                className="gallery__thumb"
-                style={{
-                  background: `linear-gradient(140deg, ${item.palette[0]}, ${item.palette[1]})`,
-                }}
-                aria-hidden="true"
-              >
-                <span className="gallery__nail" />
-                <span className="gallery__nail" />
-                <span className="gallery__nail" />
+              <div className="gallery__thumb">
+                <img
+                  className="gallery__image"
+                  src={item.image}
+                  alt={item.alt}
+                  loading="lazy"
+                />
               </div>
               <p className="gallery__caption">{item.name}</p>
             </li>

@@ -76,7 +76,7 @@ export default function Hero() {
         </div>
 
         <div className="hero__figure">
-          <HandIllustration />
+          {/* <HandIllustration /> */}
         </div>
       </div>
     </section>
