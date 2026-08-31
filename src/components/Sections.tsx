@@ -397,7 +397,7 @@ export function Footer() {
       <div className="section__shell footer__shell">
         <div>
           <p className="footer__logo">
-            raquel<span>&apos;s</span> nails
+            Raquel <span>S</span> Nails
           </p>
           <p className="footer__note">
             Elegância na ponta dos dedos, com hora marcada.
@@ -424,13 +424,12 @@ export function Footer() {
         </address>
 
         <div className="footer__hours">
-          <p>Terça a sexta: 9h às 19h</p>
-          <p>Sábado: 9h às 16h</p>
+          <p>Segunda a sexta: 9h às 19h</p>
         </div>
       </div>
 
       <p className="footer__copy">
-        © {new Date().getFullYear()} Raquel&apos;s Nails. Todos os direitos
+        © {new Date().getFullYear()} Raquel S Nails. Todos os direitos
         reservados.
       </p>
     </footer>

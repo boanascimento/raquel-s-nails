@@ -14,7 +14,7 @@ export default function Header() {
     <header className="header">
       <div className="header__shell">
         <a className="header__logo" href="#top">
-          raquel<span className="header__logo-accent">&apos;s</span> nails
+          Raquel <span className="header__logo-accent">S</span> Nails
         </a>
 
         <button
